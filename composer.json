@@ -1,0 +1,17 @@
+{
+    "name": "wouter/pluim",
+    "description": "Slackbot to send compliments in style",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "ext-json": "^1.7"
+    },
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Wouter Groenewold",
+            "email": "wouter@ghocommunicatie.nl"
+        }
+    ]
+}

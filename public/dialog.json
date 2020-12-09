@@ -1,0 +1,44 @@
+[
+    {
+      "type": "image",
+      "image_url": "<IMAGE_URL>",
+      "alt_text": "<ALT_TEXT>"
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": ":white_check_mark: Verzenden",
+            "emoji": true
+          },
+          "style": "primary",
+          "value": "btn_send_<IMG_ID>",
+          "action_id": "send"
+        },
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": ":repeat: Schudden",
+            "emoji": true
+          },
+          "value": "btn_shuffle_<IMG_ID>",
+          "action_id": "shuffle"
+        },
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": ":x: Annuleren",
+            "emoji": true
+          },
+          "style": "danger",
+          "value": "btn_cancel_<IMG_ID>",
+          "action_id": "cancel"
+        }
+      ]
+    }
+  ]
