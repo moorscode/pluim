@@ -1,8 +1,7 @@
 # Pluim
 Slackbot to give compliments to others with custom GIFS
 
-![Pluim](https://github.com/wgroenewold/pluim/raw/main/pluim_icon.jpg)
-
+<img src="https://github.com/wgroenewold/pluim/raw/main/pluim_icon.jpg" width="200">
 
 ## Setup
 - Clone repo
