@@ -16,3 +16,5 @@ Slackbot to give compliments to others with custom GIFS
 ## Note
 Images like the filename of id_filename.gif like 14_drinking_champagne.gif
 
+
+`/pluim`, a workinnovation by *<https://ghocommunicatie.nl|GH+O communicatie>*
