@@ -25,6 +25,13 @@ if($receive && array_key_exists('command', $receive) && $receive['command'] === 
 								'type' => 'image',
 								'image_url' => '<IMAGE_URL>',
 					            'alt_text' => '<ALT_TEXT>',
+							),
+							array(
+								'type' => 'context',
+								'elements' => array(array(
+									'type' => 'mrkdwn',
+									'text' => 'Gestuurd via `/pluim`, een werkinnovatie van *<https://ghocommunicatie.nl|GH+O communicatie>*'
+								)),
 							)
 						));
 			$blocks = $instance->helpers->format_message($send_block, $decode['id']);
@@ -47,3 +54,5 @@ if($receive && array_key_exists('command', $receive) && $receive['command'] === 
 			break;
 	};
 }
+
+
