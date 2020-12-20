@@ -10,9 +10,11 @@ use GuzzleHttp\Exception\TransferException;
  */
 class API {
 	private $token;
+	private $logfile;
 
-	public function __construct( $token ) {
-		$this->token = $token;
+	public function __construct( $token, $logfile ) {
+		$this->token   = $token;
+		$this->logfile = $logfile;
 	}
 
 	public function get($uri, $data){
@@ -69,9 +71,7 @@ class API {
 	}
 
 	public function log( $error ) {
-		$file = $_ENV['LOG_FILE'];
-
-		$handle = fopen( $file, 'a' );
+		$handle = fopen( $this->logfile, 'a' );
 		frwite( $handle, json_encode( $error ) );
 		fclose( $handle );
 	}

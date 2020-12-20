@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GHO\\": "public/app/"
+            "GHO\\Pluim\\": "public/app/"
         }
     },
     "license": "GPLv3",

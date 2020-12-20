@@ -10,9 +10,9 @@ class Pluim {
 	private $slack;
 	private $api;
 
-	public function __construct( $token ) {
+	public function __construct( $token, $logfile ) {
 		$this->token = $token;
-		$this->api   = new API( $this->token );
+		$this->api   = new API( $this->token, $logfile );
 		$this->slack = new Slack( $this->api );
 	}
 
@@ -128,11 +128,11 @@ class Pluim {
 
 		$data = [
 			'attachments' => $attachments,
-			'channel' => $channel,
-			'text'    => $text,
-			'user' => $user,
-			'as_user' => $as_user,
-			'blocks'  => $blocks,
+			'channel'     => $channel,
+			'text'        => $text,
+			'user'        => $user,
+			'as_user'     => $as_user,
+			'blocks'      => $blocks,
 		];
 
 		return $this->slack->chat_postephemeral( $data );
@@ -140,11 +140,11 @@ class Pluim {
 
 	public function update_ephemeral($response_url,  $blocks, $text = 'text'){
 		$data = [
-			'response_type' => 'ephemeral',
-			'text' => $text,
+			'response_type'    => 'ephemeral',
+			'text'             => $text,
 			'replace_original' => true,
-            'delete_original' =>  true,
-			'blocks' => $blocks,
+            'delete_original'  =>  true,
+			'blocks'           => $blocks,
 		];
 
 		return $this->api->send($response_url, $data);
@@ -216,22 +216,20 @@ class Pluim {
 		return str_replace( $search, $replace, $data );
 	}
 
-	public function get_image_by_id($id){
-		$img_array = $this->get_images();
-		$img = '';
-		foreach($img_array as $item){
-			if(strpos($item, $id . '_') === 0){
-				$img = $item;
-				break;
+	public function get_image_by_id( $id ) {
+		foreach( $this->get_images() as $item ) {
+			if( strpos( $item, $id . '_' ) === 0 ) {
+				return $$this->img_path_to_url( $item );
 			}
 		}
 
-		return $this->img_path_to_url($img);
+		return '';
 	}
 
 	public function get_images(){
-		$dir       = 'assets/img';
+		$dir       = 'assets/img'; // @todo this could be an ENV variable.
 		$img_array = [];
+
 		$dir_arr   = scandir( $dir );
 		$arr_files = array_diff( $dir_arr, [ '.', '..' ] );
 
@@ -240,7 +238,7 @@ class Pluim {
 			$ext       = pathinfo( $file_path, PATHINFO_EXTENSION );
 
 			if ( strtolower( $ext ) === 'gif' ) {
-				array_push( $img_array, $file );
+				$img_array[] = $file;
 			}
 		}
 
@@ -251,7 +249,6 @@ class Pluim {
 		$img_array = $this->get_images();
 
 		$key = array_rand( $img_array );
-
 		if( $previous !== false ) {
 			while( $rand === $previous ) {
 				$key = array_rand( $img_array );
@@ -261,7 +258,7 @@ class Pluim {
 		return $this->img_path_to_url( $img_array[ $rand ] );
 	}
 
-	public function img_path_to_url($img_path){
+	public function img_path_to_url( $img_path ) {
 		return $_ENV['DOMAIN'] . '/assets/img/' . $img_path;
 	}
 

@@ -2,14 +2,14 @@
 
 namespace GHO;
 
-require '../vendor/autoload.php';
+require dirname( __DIR__ ) . '/vendor/autoload.php';
 
-$dotenv = \Dotenv\Dotenv::createImmutable( '../' );
+$dotenv = \Dotenv\Dotenv::createImmutable( dirname( __DIR__ ) );
 $dotenv->load();
 
 setlocale( LC_ALL, 'nl_NL' );
 
-$pluim = new Pluim\Pluim( $_ENV['SLACK_TOKEN'] );
+$pluim = new Pluim\Pluim( $_ENV['SLACK_TOKEN'], $_ENV['LOGFILE'] );
 
 $receive = $_POST;
 if ( ! $receive ) {
