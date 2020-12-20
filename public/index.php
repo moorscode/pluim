@@ -4,7 +4,7 @@ namespace GHO;
 
 require '../vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable( '../' );
+$dotenv = \Dotenv\Dotenv::createImmutable( '../' );
 $dotenv->load();
 
 setlocale( LC_ALL, 'nl_NL' );
