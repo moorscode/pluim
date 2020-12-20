@@ -17,7 +17,7 @@ class API {
 		$this->logfile = $logfile;
 	}
 
-	public function get($uri, $data){
+	public function get( $uri, $data ) {
 		try{
 			$client = new Client();
 			$result = $client->get( $uri, [ 'query' => $data ] );
@@ -35,7 +35,7 @@ class API {
 		return false;
 	}
 
-	public function send($uri, $data){
+	public function send( $uri, $data ) {
 		//Add extra headers for Slack.
 		try{
 			$client = new Client(
@@ -56,7 +56,7 @@ class API {
 				return $body;
 			}
 		}
-		catch( TransferException $e ){
+		catch( TransferException $e ) {
 			$this->log( $e );
 		}
 

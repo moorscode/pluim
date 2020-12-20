@@ -53,7 +53,7 @@ if ( array_key_exists( 'command', $receive ) && $receive['command'] === '/pluim'
 			$channel = $payload['channel']['id'];
 
 			$pluim->delete_ephemeral( $response_url );
-            $pluim->create_msg( $_ENV['BALLOON_TXT'], $blocks, $channel );
+			$pluim->create_msg( $_ENV['BALLOON_TXT'], $blocks, $channel );
 
 			break;
 		case 'shuffle':
