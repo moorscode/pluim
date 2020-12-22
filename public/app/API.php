@@ -71,8 +71,8 @@ class API {
 	}
 
 	public function log( $error ) {
-		$handle = fopen( $this->logfile, 'a' );
-		frwite( $handle, json_encode( $error ) );
+		$handle = fopen( $this->logfile, 'ab');
+		fwrite( $handle, json_encode( $error ) );
 		fclose( $handle );
 	}
 }
